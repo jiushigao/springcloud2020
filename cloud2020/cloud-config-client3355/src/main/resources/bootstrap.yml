@@ -1,0 +1,27 @@
+#bootstrap.yml该配置文件比application.yml配置文件优先级更高
+server:
+  port: 3355
+spring:
+  application:
+    name: cloud-config-client
+  cloud:
+    config:
+      #config客户处端配置
+      uri: http://localhost:3344  #配置中心地址
+      #搜索目录
+      username: 2836428900@qq.com
+      password: wangjie037413
+      #读取的git分支
+      label: master
+      name: config  #配置文件名称
+      profile: dev  #读取后缀名称   以上三个综合起来就是读取git上master分支的config-dev.yml文件，调用地址：http://localhost:3344/master/config-dev.yml
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+#暴露监控端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"

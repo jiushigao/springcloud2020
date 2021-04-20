@@ -1,0 +1,23 @@
+server:
+  port: 80  #http请求默认端口为80，若端口设为80则调用时可不输入端口
+spring:
+  application:
+    name: cloud-order-service
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://localhost:7001/eureka/
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/  #集群服务端
+    register-with-eureka: false
+ribbon:
+  #建立连接消耗的时间
+  ConnectTimeout: 6000
+  #建立连接后读取资源消耗的时间
+  ReadTimeout: 6000
+logging:
+  level:
+    #开启feign调用日志打印
+    com.learn.springcloud.service.PaymentService: debug
+feign:
+  hystrix:
+    enabled: true
